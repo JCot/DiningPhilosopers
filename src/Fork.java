@@ -1,16 +1,28 @@
 
 public class Fork implements IFork {
 
+	private boolean allocated = false;
+	
 	@Override
 	public void acquire() {
-		// TODO Auto-generated method stub
-
+		synchronized(this) {
+			while (this.allocated){
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		allocated = true;
 	}
 
 	@Override
 	public void release() {
-		// TODO Auto-generated method stub
-
+		synchronized(this){
+			allocated = false;
+			notifyAll();
+		}
 	}
 
 }
