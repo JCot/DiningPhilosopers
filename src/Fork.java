@@ -10,6 +10,9 @@ public class Fork implements IFork {
 
 	private boolean allocated = false;
 	
+	/**
+	 * Allows a philosopher to acquire the fork.
+	 */
 	@Override
 	public void acquire() {
 		synchronized(this) {
@@ -24,6 +27,9 @@ public class Fork implements IFork {
 		allocated = true;
 	}
 
+	/**
+	 * Allows a philosopher to release a fork.
+	 */
 	@Override
 	public void release() {
 		synchronized(this){

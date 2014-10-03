@@ -1,4 +1,3 @@
-
 public interface IFork {
 	/*
      * A philosopher (attempts to) acquire the fork.
