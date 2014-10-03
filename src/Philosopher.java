@@ -1,5 +1,13 @@
 import java.util.Random;
 
+/**
+ * Simulates a philosopher in the Dining Philosophers problem.
+ * A philosopher thinks for a while reaches for a fork, reaches
+ * for the other fork, and then eats only when both forks are acquired.
+ * 
+ * @author Justin
+ *
+ */
 
 public class Philosopher extends Thread{
 	
