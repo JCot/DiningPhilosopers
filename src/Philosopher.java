@@ -12,7 +12,7 @@ public class Philosopher extends Thread{
 	long eatMillis;
 	
 	public Philosopher(int id, Fork left, Fork right, boolean rHanded,
-			int nTimes, long thinkMillis, long eatMillis){
+			int nTimes, long thinkMillis, long eatMillis) {
 		this.id = id;
 		this.left = left;
 		this.right = right;
@@ -27,7 +27,7 @@ public class Philosopher extends Thread{
 		Random rand = new Random();
 		
 		do{
-			int t = rand.nextInt(((int)thinkMillis/1000));
+			int t = rand.nextInt(((int)thinkMillis/1000)+1);
 			
 			System.out.println("Philosopher " + id + " sleeps for " + t + " time units.");
 			
@@ -41,7 +41,7 @@ public class Philosopher extends Thread{
 				
 				right.acquire();
 				
-				System.out.println("Philospher " + id + " has right fork.");
+				System.out.println("Philosopher " + id + " has right fork.");
 				
 				yield();
 			}
@@ -59,10 +59,10 @@ public class Philosopher extends Thread{
 				
 				right.acquire();
 				
-				System.out.println("Philospher " + id + " has right fork.");
+				System.out.println("Philosopher " + id + " has right fork.");
 			}
 			
-			t = rand.nextInt(((int)eatMillis/1000));
+			t = rand.nextInt(((int)eatMillis/1000)+1);
 			
 			System.out.println("Philosopher " + id + " eats for " + t + " time units.");
 			
@@ -82,7 +82,7 @@ public class Philosopher extends Thread{
 			if(nTimes > 0){
 				count++;
 			}
-		}while(count <= nTimes);
+		}while(count < nTimes);
 	}
 
 }
